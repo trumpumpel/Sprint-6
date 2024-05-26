@@ -1,0 +1,10 @@
+Element with locator ('xpath', "//input[@placeholder='* Когда привезти самокат']") not found within 5 seconds.
+Failed to enter_text on element
+Element with locator ('css selector', '.Dropdown-root') not found within 5 seconds.
+Failed to enter_text on element
+Element with locator ('css selector', '.Order_Checkboxes__3lWSI') not found within 5 seconds.
+Failed to check an element
+Element with locator ('xpath', "//input[@placeholder='Комментарий для курьера']") not found within 5 seconds.
+Failed to enter_text on element with locator ('xpath', "//input[@placeholder='Комментарий для курьера']")
+Element with locator ('xpath', "//button[text()= 'Да']") not found within 5 seconds.
+Failed to click on element with locator ('xpath', "//button[text()= 'Да']")
