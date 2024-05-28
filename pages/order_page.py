@@ -21,7 +21,7 @@ class OrderPage(BasePage):
 
     def set_button_click(self):
         with allure.step("Кликаем по элементу"):
-            self.click_element(OrderPageLocators.UPPER_ORDER_BUTTON, 5)
+            self.click_element(OrderPageLocators.UPPER_ORDER_BUTTON, 15)
 
     def set_name(self):
         with allure.step("Вводим в поле {NAME}"):
@@ -41,7 +41,7 @@ class OrderPage(BasePage):
 
     def select_metro(self, text):
         with allure.step("Выбираем из списка текст {metro_element} и кликаем"):
-            metro_element = self.find_element(OrderPageLocators.METRO_ORDER, 5)
+            metro_element = self.find_element(OrderPageLocators.METRO_ORDER, 15)
             self.select_by_list(metro_element, text)
 
     def set_phone(self):
@@ -54,17 +54,17 @@ class OrderPage(BasePage):
 
     def select_date_deliver(self, text):
         with allure.step("Выбираем из списка дату и кликаем"):
-            date_deliver_element = self.find_element(OrderPageLocators.DATE_DELIVER, 5)
+            date_deliver_element = self.find_element(OrderPageLocators.DATE_DELIVER, 15)
         self.select_by_list(date_deliver_element, text)
 
     def select_rental_period(self, text):
         with allure.step("Выбираем из списка текст {rental_element} и кликаем"):
-            rental_element = self.find_element(OrderPageLocators.RENTAL_PERIOD, 5)
+            rental_element = self.find_element(OrderPageLocators.RENTAL_PERIOD, 15)
             self.select_by_list_in_div(rental_element, text)
 
     def check_scooter_color(self, color):
         with allure.step("Выбираем из цвет самоката"):
-            scooter_color_element = self.find_element(OrderPageLocators.SCOOTER_COLOR_ELEMENT, 5)
+            scooter_color_element = self.find_element(OrderPageLocators.SCOOTER_COLOR_ELEMENT, 15)
             if scooter_color_element:
                 if color in COLORS.keys():
                     print(COLORS.get(color))

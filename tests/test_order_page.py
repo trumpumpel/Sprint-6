@@ -29,18 +29,18 @@ class TestOrderPage:
     def test_order_form(self, driver, name, surname, address, metro, phone, date_deliver):
         order_page = OrderPage(driver)
         order_page.open_page()
-        order_page.enter_text(OrderPageLocators.NAME_ORDER, name, 5)
-        order_page.enter_text(OrderPageLocators.SURNAME_ORDER, surname, 5)
-        order_page.enter_text(OrderPageLocators.ADDRESS_ORDER, address, 5)
+        order_page.enter_text(OrderPageLocators.NAME_ORDER, name, 15)
+        order_page.enter_text(OrderPageLocators.SURNAME_ORDER, surname, 15)
+        order_page.enter_text(OrderPageLocators.ADDRESS_ORDER, address, 15)
         order_page.select_metro(metro)
-        order_page.enter_text(OrderPageLocators.PHONE_ORDER, phone, 5)
-        order_page.click_element(OrderPageLocators.FURTHER_BUTTON, 5)
+        order_page.enter_text(OrderPageLocators.PHONE_ORDER, phone, 15)
+        order_page.click_element(OrderPageLocators.FURTHER_BUTTON, 15)
         order_page.select_date_deliver(date_deliver)
         order_page.select_rental_period('сутки')
         order_page.check_scooter_color('серая безысходность')
-        order_page.enter_text(OrderPageLocators.COMMENT_ORDER, 'Наталья, морская пехота!', 5)
-        order_page.click_element(OrderPageLocators.ORDER_BTN, 5)
-        order_page.click_element(OrderPageLocators.APPROVAL_BTN, 5)
+        order_page.enter_text(OrderPageLocators.COMMENT_ORDER, 'Наталья, морская пехота!', 15)
+        order_page.click_element(OrderPageLocators.ORDER_BTN, 15)
+        order_page.click_element(OrderPageLocators.APPROVAL_BTN, 15)
         text_header = driver.find_element(*OrderPageLocators.ORDER_PLACED)
         assert 'Заказ оформлен' in text_header.text
 
@@ -48,7 +48,7 @@ class TestOrderPage:
     def test_scooter_link(self, driver):
         order_page = OrderPage(driver)
         order_page.open_page()
-        order_page.find_element(OrderPageLocators.SCOOTER, 5).click()
+        order_page.find_element(OrderPageLocators.SCOOTER, 15).click()
         current_url = driver.current_url
         assert driver.current_url == 'https://qa-scooter.praktikum-services.ru/'
 

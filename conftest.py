@@ -16,7 +16,5 @@ def browser_settings():
 def driver():
     firefox = webdriver.Firefox()
     firefox.get(URL)
-
     yield firefox
-
     firefox.quit()
