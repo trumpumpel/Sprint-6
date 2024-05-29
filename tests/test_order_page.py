@@ -28,7 +28,7 @@ class TestOrderPage:
     )
     def test_order_form(self, driver, name, surname, address, metro, phone, date_deliver):
         order_page = OrderPage(driver)
-        order_page.open_page()
+        order_page.navigate(f"{URL}order")
         order_page.enter_text(OrderPageLocators.NAME_ORDER, name, 15)
         order_page.enter_text(OrderPageLocators.SURNAME_ORDER, surname, 15)
         order_page.enter_text(OrderPageLocators.ADDRESS_ORDER, address, 15)
@@ -44,19 +44,17 @@ class TestOrderPage:
         text_header = driver.find_element(*OrderPageLocators.ORDER_PLACED)
         assert 'Заказ оформлен' in text_header.text
 
-    @allure.step('Проверка перехода на страницу Дзен по клику на логотип Яндекс')
+    @allure.step('Проверка перехода на главную страницу Самокат по клику на логотип Самокат')
     def test_scooter_link(self, driver):
         order_page = OrderPage(driver)
-        order_page.open_page()
         order_page.find_element(OrderPageLocators.SCOOTER, 15).click()
         current_url = driver.current_url
-        assert driver.current_url == 'https://qa-scooter.praktikum-services.ru/'
+        assert driver.current_url == f"{URL}"
 
-    @allure.step('Проверка перехода на главную страницу Самокат по клику на логотип Самокат')
+    @allure.step('Проверка перехода на страницу Дзен по клику на логотип Яндекс')
     def test_dzen_link(self, driver):
         wait = WebDriverWait(driver, 10)
         main_page = MainPage(driver)
-        main_page.open(URL)
         original_window = driver.current_window_handle
         dzen_button = driver.find_element(*OrderPageLocators.DZEN_BUTTON)
         dzen_button.click()

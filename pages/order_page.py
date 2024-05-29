@@ -11,9 +11,9 @@ class OrderPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    def open_page(self):
-        with allure.step("Открываем страницу"):
-            self.navigate(f"{URL}order")
+    # def open_page(self):
+    #     with allure.step("Открываем страницу"):
+    #         self.navigate(f"{URL}order")
 
     def find_elem(self):
         with allure.step("Ищем элемент"):

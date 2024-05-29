@@ -9,10 +9,6 @@ class MainPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    def open(self, url):
-        with allure.step("Открываем страницу"):
-            self.navigate(URL)
-
     def first_question_btn(self, question_locator):
         with allure.step("Ищем заданный элемент"):
             return self.find_element(question_locator, 15)
