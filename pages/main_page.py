@@ -1,5 +1,4 @@
 from pages.base_page import BasePage
-from data import URL
 from conftest import driver
 import allure
 

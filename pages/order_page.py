@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
-from data import URL, ADDRESS, METRO, NAME, SURNAME, PHONE, COLORS
+from data import ADDRESS, METRO, NAME, SURNAME, PHONE, COLORS
 from conftest import driver
 from locators.order_page_locators import OrderPageLocators
 import allure
@@ -11,13 +11,9 @@ class OrderPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    # def open_page(self):
-    #     with allure.step("Открываем страницу"):
-    #         self.navigate(f"{URL}order")
-
     def find_elem(self):
         with allure.step("Ищем элемент"):
-            self.find_element(OrderPageLocators.NAME_ORDER)
+            self.find_element(OrderPageLocators.NAME_ORDER, 15)
 
     def set_button_click(self):
         with allure.step("Кликаем по элементу"):
@@ -25,15 +21,15 @@ class OrderPage(BasePage):
 
     def set_name(self):
         with allure.step("Вводим в поле {NAME}"):
-            self.enter_text(OrderPageLocators.NAME_ORDER, NAME)
+            self.enter_text(OrderPageLocators.NAME_ORDER, NAME, 15)
 
     def set_surname(self):
         with allure.step("Вводим в поле {SURNAME}"):
-            self.enter_text(OrderPageLocators.SURNAME_ORDER, SURNAME)
+            self.enter_text(OrderPageLocators.SURNAME_ORDER, SURNAME, 15)
 
     def set_address(self):
         with allure.step("Вводим в поле {ADDRESS}"):
-            self.enter_text(OrderPageLocators.ADDRESS_ORDER, ADDRESS)
+            self.enter_text(OrderPageLocators.ADDRESS_ORDER, ADDRESS, 15)
 
     def set_metro(self):
         with allure.step("Вводим в поле {METRO}"):
@@ -46,16 +42,16 @@ class OrderPage(BasePage):
 
     def set_phone(self):
         with allure.step("Вводим в поле {PHONE}"):
-            self.enter_text(OrderPageLocators.PHONE_ORDER, PHONE)
+            self.enter_text(OrderPageLocators.PHONE_ORDER, PHONE, 15)
 
     def submit_button_click(self):
         with allure.step("Кликаем по кнопке"):
-            self.click_element(OrderPageLocators.FURTHER_BUTTON)
+            self.click_element(OrderPageLocators.FURTHER_BUTTON, 15)
 
     def select_date_deliver(self, text):
         with allure.step("Выбираем из списка дату и кликаем"):
             date_deliver_element = self.find_element(OrderPageLocators.DATE_DELIVER, 15)
-        self.select_by_list(date_deliver_element, text)
+            self.select_by_list(date_deliver_element, text)
 
     def select_rental_period(self, text):
         with allure.step("Выбираем из списка текст {rental_element} и кликаем"):
