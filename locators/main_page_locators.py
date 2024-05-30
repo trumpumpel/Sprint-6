@@ -21,3 +21,4 @@ class MainPageLocators:
     UPPER_ORDER_BUTTON = (By.XPATH, "//*[@class='Button_Button__ra12g']")
     LOWER_ORDER_BUTTON = (By.XPATH, "//*[@class='Button_Button__ra12g Button_Middle__1CSJM']")
     ORDER_HEADER = (By.XPATH, "//div[contains(text(), 'Для кого самокат')]")
+    DZEN_BUTTON = By.CSS_SELECTOR, ".Header_LogoYandex__3TSOI"

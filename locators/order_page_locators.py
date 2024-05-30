@@ -22,4 +22,3 @@ class OrderPageLocators:
     YANDEX = (By.XPATH, "//img[@alt= 'Yandex']")
     SCOOTER = (By.XPATH, "//img[@alt= 'Scooter']")
     CALENDAR = (By.XPATH, "//div[text()='1']")
-    DZEN_BUTTON = By.CSS_SELECTOR, ".Header_LogoYandex__3TSOI"

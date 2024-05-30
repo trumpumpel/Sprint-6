@@ -1,8 +1,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from pages.order_page import OrderPage
-from pages.main_page import MainPage
-from data import URL
+from data import URL, DZEN
 from conftest import driver
 from locators.order_page_locators import OrderPageLocators
 import pytest
@@ -48,18 +47,12 @@ class TestOrderPage:
     def test_scooter_link(self, driver):
         order_page = OrderPage(driver)
         order_page.find_element(OrderPageLocators.SCOOTER, 15).click()
-        current_url = driver.current_url
         assert driver.current_url == f"{URL}"
 
     @allure.step('Проверка перехода на страницу Дзен по клику на логотип Яндекс')
     def test_dzen_link(self, driver):
-        wait = WebDriverWait(driver, 10)
-        main_page = MainPage(driver)
+        order_page = OrderPage(driver)
         original_window = driver.current_window_handle
-        dzen_button = driver.find_element(*OrderPageLocators.DZEN_BUTTON)
-        dzen_button.click()
-        wait.until(expected_conditions.number_of_windows_to_be(2))
-        for window_handle in driver.window_handles:
-            if window_handle != original_window:
-                driver.switch_to.window(window_handle)
-                break
+        order_page.dzen_button_click(original_window)
+        current_url = driver.current_url
+        assert current_url == DZEN

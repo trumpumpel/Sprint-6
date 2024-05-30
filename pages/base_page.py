@@ -6,6 +6,8 @@ from selenium.webdriver.common.by import By
 from conftest import driver
 import allure
 
+from locators.main_page_locators import MainPageLocators
+
 
 class BasePage:
 
@@ -55,3 +57,16 @@ class BasePage:
     def scroll(self, element):
         with allure.step("Скролим страницу до заданного элемента"):
             self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
+    def dzen_button_click(self, original_window):
+        driver_wait = WebDriverWait(self.driver, 10)
+        dzen_button = self.driver.find_element(*MainPageLocators.DZEN_BUTTON)
+        dzen_button.click()
+        driver_wait.until(expected_conditions.number_of_windows_to_be(2))
+
+        for window_handle in self.driver.window_handles:
+            if window_handle != original_window:
+                self.driver.switch_to.window(window_handle)
+                search_container_present = EC.presence_of_element_located((By.ID, 'ya-search-container-uri0hf'))
+                driver_wait.until(search_container_present)
+                break

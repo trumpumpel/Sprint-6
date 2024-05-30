@@ -16,7 +16,7 @@ class OrderPage(BasePage):
             self.find_element(OrderPageLocators.NAME_ORDER, 15)
 
     def set_button_click(self):
-        with allure.step("Кликаем по элементу"):
+        with allure.step("Клик по кнопке Заказать"):
             self.click_element(OrderPageLocators.UPPER_ORDER_BUTTON, 15)
 
     def set_name(self):
