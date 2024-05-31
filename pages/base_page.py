@@ -29,6 +29,7 @@ class BasePage:
 
     def click_el(self, element):
         with allure.step("Кликаем по элементу"):
+            self.scroll(element)
             element.click()
 
     def enter_text(self, locator: tuple, text: str, timeout: 15):
